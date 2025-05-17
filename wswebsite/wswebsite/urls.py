@@ -16,7 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from wswebsite import views
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("admin/", admin.site.urls, name="admin"),
+    path('', views.homepage, name='homepage'),  # <-- root URL
+    path("about-us/", views.aboutUs, name="aboutUs"),
+    path("contact-us/", views.contactUs, name="contactUs"),
+    path("course/", views.course, name="Course"),
+    path('course/<str:courseid>/', views.courseDetails),
+    
 ]
+# if you dont know type of url than remove str int slug etc and it will csn take anytype
